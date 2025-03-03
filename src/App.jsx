@@ -7,8 +7,7 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./pages/Homepage";
 import AboutUs from "./pages/AboutUs";
 import Posts from "./pages/Posts";
-
-// import SinglePost from "./pages/SinglePost"
+import SinglePost from "./pages/SinglePost"
 
 function App() {
 
@@ -18,11 +17,10 @@ function App() {
         <Routes >
           <Route Component={DefaultLayout}>
 
-            {/* qui importo le pages */}
+            {/* importo le pages */}
             <Route path="/" Component={HomePage} />
             <Route path="/aboutus" Component={AboutUs} />
             <Route path="/posts" Component={Posts} />
-
             <Route path="/posts/:id" Component={SinglePost} />
 
           </Route>

@@ -34,20 +34,18 @@ export default function Posts() {
 
 
 
-
-
     return (
 
-        <div className="card col-4 mx-auto text-center">
+        <div className="card col-6 mx-auto text-center">
             <ul className="list-group list-group-flush">
 
                 {/* //task mappo array reattivo dopo call e uso NavLink per ricollegare il path! */}
                 {posts.map(p => {
                     return (
                         <li key={p.id} className="list-group-item">
-                            {/* <NavLink to={`/posts/${p.id}`}> */}
-                            {p.titolo}
-                            {/* </NavLink> */}
+                            <NavLink to={`/posts/${p.id}`}>
+                                {p.titolo}
+                            </NavLink>
                         </li>
                     )
                 })
