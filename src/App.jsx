@@ -8,6 +8,8 @@ import HomePage from "./pages/Homepage";
 import AboutUs from "./pages/AboutUs";
 import Posts from "./pages/Posts";
 
+// import SinglePost from "./pages/SinglePost"
+
 function App() {
 
   return (
@@ -20,6 +22,9 @@ function App() {
             <Route path="/" Component={HomePage} />
             <Route path="/aboutus" Component={AboutUs} />
             <Route path="/posts" Component={Posts} />
+
+            <Route path="/posts/:id" Component={SinglePost} />
+
           </Route>
 
         </Routes>
