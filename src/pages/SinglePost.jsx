@@ -2,14 +2,16 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 
-//? recupero 
+//? import da react-router-dom useParams e useNavigate
 import { useParams } from "react-router-dom"
+import BackBtn from "../components/BackBtn"
 
-//? recupero 
-import { useNavigate } from "react-router-dom"
-
+// import { useNavigate } from "react-router-dom"
+//*bonus useNavigate e conseguente navigate(importati dal componente BackBtn)
 
 export default function SinglePost() {
+    //task import navigate
+    // const navigate = useNavigate()
 
     //task destructuring
     const { id } = useParams()
@@ -17,8 +19,6 @@ export default function SinglePost() {
     //task import da .env
     const url = import.meta.env.VITE_ENDPOINT_URL
 
-    //task import navigate
-    const navigate = useNavigate()
 
     //task setup useState dell'obj in show con {id} di useParams
     const [singlePost, setSinglePost] = useState({
@@ -28,6 +28,8 @@ export default function SinglePost() {
         immagine: "",
         tags: []
     })
+    //task destructuring
+    const { immagine, titolo, contenuto, tags } = singlePost
 
 
     useEffect(() => {
@@ -44,23 +46,25 @@ export default function SinglePost() {
 
     return (
         <>
-            <div key={id} class="card col-6 mx-auto">
-                <img class="card-img-top" src={singlePost.immagine} alt={singlePost.titolo} />
-                <div class="card-body text-center ">
-                    <h4 class="card-title">{singlePost.titolo}</h4>
-                    <p class="card-text">{singlePost.contenuto}</p>
+            <div key={id} className="card col-6 mx-auto p-3">
+                <img className="card-img-top" src={immagine} alt={titolo} />
+                <div className="card-body text-center ">
+                    <h3 className="card-title">{titolo}</h3>
+                    <p className="card-text">{contenuto}</p>
                     <ul >
                         <li> #TAGS </li>
                         {
-                            singlePost.tags.map((p, id) => {
+                            tags.map((p, id) => {
                                 return (
                                     <li key={id} > {p} </li>
                                 )
                             })
                         }
                     </ul>
-                    <button className="btn btn-warning float-end " onClick={() => navigate(-1)}> back</button>
+                    <BackBtn />
+
                 </div>
+
             </div>
         </>
 
